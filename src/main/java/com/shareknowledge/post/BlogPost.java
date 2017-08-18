@@ -1,6 +1,6 @@
 package com.shareknowledge.post;
 
-import com.shareknowledge.Base.Base;
+import com.shareknowledge.base.Base;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

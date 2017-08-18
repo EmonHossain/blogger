@@ -1,4 +1,4 @@
-package com.shareknowledge.Base;
+package com.shareknowledge.base;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
