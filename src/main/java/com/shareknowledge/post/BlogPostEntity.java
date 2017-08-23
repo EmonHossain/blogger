@@ -19,7 +19,7 @@ import javax.persistence.*;
 @ToString
 public class BlogPostEntity extends Base {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
     private String title;
     private String overview;
