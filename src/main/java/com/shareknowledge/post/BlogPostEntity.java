@@ -6,9 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Emon Hossain on 8/18/2017.
@@ -20,6 +18,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @ToString
 public class BlogPostEntity extends Base {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long postId;
     private String title;
     private String overview;
