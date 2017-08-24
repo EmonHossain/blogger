@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.shareknowledge.user.UserDetails;
 import com.shareknowledge.user.UserEntity;
-import com.shareknowledge.user.UserRepository;
 import com.shareknowledge.user.UserService;
 
 @RunWith(SpringRunner.class)
