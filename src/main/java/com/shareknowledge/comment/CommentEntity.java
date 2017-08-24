@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+
+import com.shareknowledge.post.BlogPostEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +26,9 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
     private String comment;
+    @ManyToOne(optional=false)
+    @JoinColumn(name="postId")
+    private BlogPostEntity blogPostEntity;
     @OneToMany(targetEntity = ReplyEntity.class,mappedBy = "commentEntity",orphanRemoval = true)
     private List<ReplyEntity> replyEntities = new ArrayList<ReplyEntity>();
 
