@@ -22,14 +22,11 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class CommentEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
-    private String comment;
-    @ManyToOne(optional=false)
-    @JoinColumn(name="postId")
-    private BlogPostEntity blogPostEntity;
-    @OneToMany(targetEntity = ReplyEntity.class,mappedBy = "commentEntity",orphanRemoval = true)
-    private List<ReplyEntity> replyEntities = new ArrayList<ReplyEntity>();
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long commentId;
+	private String comment;
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "postId")
+	private BlogPostEntity blogPostEntity;
 }

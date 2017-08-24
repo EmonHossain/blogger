@@ -19,7 +19,7 @@ public class ReplyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;
     private String reply;
-    @ManyToOne
+    @ManyToOne(optional=false)
     @JoinColumn(name = "commentId")
     private CommentEntity commentEntity;
 }
