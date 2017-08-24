@@ -24,7 +24,7 @@ public interface BaseService {
 	 * @param id
 	 * @return Single object
 	 */
-	public <T> T getOne(T id);
+	public <T> Object getUniqueResult(T id);
 
 	/**
 	 * 
