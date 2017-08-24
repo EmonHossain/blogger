@@ -1,17 +1,19 @@
 package com.shareknowledge.post;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.shareknowledge.base.Base;
-import com.shareknowledge.comment.CommentEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
 
 /**
  * Created by Emon Hossain on 8/18/2017.
@@ -19,6 +21,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "posts")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

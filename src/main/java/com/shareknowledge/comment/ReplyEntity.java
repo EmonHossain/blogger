@@ -2,9 +2,12 @@ package com.shareknowledge.comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import com.shareknowledge.base.Base;
 
 /**
  * Created by Emon Hossain on 8/24/2017.
@@ -12,9 +15,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "replies")
 @Data
+@EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReplyEntity {
+public class ReplyEntity extends Base{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;
