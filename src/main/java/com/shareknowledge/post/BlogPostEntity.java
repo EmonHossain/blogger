@@ -1,19 +1,18 @@
 package com.shareknowledge.post;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.shareknowledge.base.BaseProperty;
 
+import com.shareknowledge.tag.TagEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Emon Hossain on 8/18/2017.
@@ -33,7 +32,8 @@ public class BlogPostEntity extends BaseProperty {
 	private String overview;
 	@Embedded
 	private Discussion discussion;
-
+	@ManyToMany(mappedBy = "blogPostEntities")
+	private Set<TagEntity> tagEntities = new HashSet<TagEntity>();
 	public BlogPostEntity(Long postId) {
 		this.postId = postId;
 	}
