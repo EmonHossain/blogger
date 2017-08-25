@@ -32,7 +32,7 @@ public interface BlogService {
 	 * @Date Aug 24, 2017 -- 2:53:19 PM
 	 * @param object
 	 */
-	public <T> void save(T object);
+	public <T> boolean save(T object);
 
 	/**
 	 * 
@@ -40,7 +40,7 @@ public interface BlogService {
 	 * @Date Aug 24, 2017 -- 2:53:32 PM
 	 * @param object
 	 */
-	public <T> void update(T object);
+	public <T> boolean update(T object);
 
 	/**
 	 * 
@@ -48,5 +48,5 @@ public interface BlogService {
 	 * @Date Aug 24, 2017 -- 2:53:36 PM
 	 * @param id
 	 */
-	public <T> void delete(T id);
+	public <T> boolean delete(T id);
 }
