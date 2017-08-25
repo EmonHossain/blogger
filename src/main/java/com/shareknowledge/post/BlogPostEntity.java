@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.shareknowledge.base.Base;
+import com.shareknowledge.base.BaseProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +25,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class BlogPostEntity extends Base {
+public class BlogPostEntity extends BaseProperty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long postId;

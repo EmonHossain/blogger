@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.shareknowledge.base.Base;
+import com.shareknowledge.base.BaseProperty;
 import com.shareknowledge.post.BlogPostEntity;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CommentEntity extends Base {
+public class CommentEntity extends BaseProperty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long commentId;
