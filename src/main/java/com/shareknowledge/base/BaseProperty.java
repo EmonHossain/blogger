@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @MappedSuperclass
 @Data
-public class Base {
+public abstract class BaseProperty {
     @CreatedBy
     private int createdBy;
     @CreatedDate
@@ -23,4 +23,8 @@ public class Base {
     private int modifiedBy;
     @LastModifiedDate
     private Date modifiedDate;
+
+    public BaseProperty(){
+        this.createdDate = new Date();
+    }
 }

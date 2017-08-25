@@ -2,6 +2,8 @@ package com.shareknowledge;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.shareknowledge.user.UserDao;
+import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,39 +17,32 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.shareknowledge.user.UserDetails;
 import com.shareknowledge.user.UserEntity;
 import com.shareknowledge.user.UserService;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { BlogApplication.class })
-@EnableJpaRepositories(basePackages="com.shareknowledge.user")
+@EnableJpaRepositories(basePackages={"com.shareknowledge.base","com.shareknowledge.user"})
 @PropertySource("test.properties")
 @EnableTransactionManagement
 public class UserTest {
-	
+
 	@Autowired
-	UserService userService;
-	
-	@Autowired
-	UserRepository repo;
-	
-	@Before
-	public void deleteAllRow(){
-		repo.deleteAll();
-	}
-	
-	private int id=0;
-	
+	UserDao repo;
+
 	@Test
 	public void saveUser(){
 		UserEntity userEntity = new UserEntity("emon","Emon","Hossain","emon",new UserDetails("SE","N/A","No one"));
-		userService.save(userEntity);
-		id = userEntity.getUserId();
-		assertThat(userService.getAll().size()).isEqualTo(1);
+		repo.saveEntity(UserEntity.class.getName(),userEntity);
+		int id = userEntity.getUserId();
+		assertThat(repo.findAll(UserEntity.class).size()).isEqualTo(1);
 		
-		UserEntity userEntity2 = (UserEntity) userService.getUniqueResult(id);
+		UserEntity userEntity2 = (UserEntity) repo.findById(UserEntity.class,id);
 		userEntity2.setFirstName("update");
 		
-		repo.save(userEntity2);
-		assertThat(repo.findOne(id).getFirstName()).isEqualTo("update");
+		repo.updateEntity(UserEntity.class.getName(),userEntity2);
+		assertThat(((UserEntity) repo.findById(UserEntity.class,id)).getFirstName()).isEqualTo("update");
 	}
 	
 	

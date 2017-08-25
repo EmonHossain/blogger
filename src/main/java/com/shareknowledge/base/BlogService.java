@@ -1,4 +1,4 @@
-package com.shareknowledge.util;
+package com.shareknowledge.base;
 
 import java.util.List;
 /**
@@ -8,7 +8,7 @@ import java.util.List;
  * Computer Source Infotech,
  * Aug 24, 2017 -- 2:53:53 PM,
  */
-public interface BaseService {
+public interface BlogService {
 	/**
 	 * 
 	 * @author Emon Hossain

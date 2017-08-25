@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import com.shareknowledge.base.Base;
+import com.shareknowledge.base.BaseProperty;
 
 /**
  * Created by Emon Hossain on 8/24/2017.
@@ -18,7 +18,7 @@ import com.shareknowledge.base.Base;
 @EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReplyEntity extends Base{
+public class ReplyEntity extends BaseProperty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;

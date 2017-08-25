@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.shareknowledge.base.Base;
+import com.shareknowledge.base.BaseProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +24,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ImageEntity extends Base {
+public class ImageEntity extends BaseProperty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long imageId;

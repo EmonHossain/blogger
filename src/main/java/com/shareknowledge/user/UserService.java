@@ -1,7 +1,7 @@
 package com.shareknowledge.user;
 
-import com.shareknowledge.util.BaseService;
+import com.shareknowledge.base.BlogService;
 
-public interface UserService extends BaseService{
+public interface UserService extends BlogService {
 
 }
