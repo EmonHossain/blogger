@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     public <T> boolean delete(T id) {
         boolean delete = true;
         try {
-            userDao.deleteEntity(new UserEntity((int)id));
+            userDao.deleteEntity(new UserEntity((Integer) id));
             logger.debug(Message.DEBUG_DELETE_ROW+id);
         } catch (Exception e) {
             delete = false;
