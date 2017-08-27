@@ -18,6 +18,10 @@ public class AsyncImageService {
 	
 	@Async
 	public CompletableFuture<byte[]> pullImageFromSystemFolder(String filePath){
+		return CompletableFuture.completedFuture(getFileFromStorage(filePath));
+	}
+	
+	public byte[] getFileFromStorage(String filePath){
 		logger.debug("Thread of Image service is called with file path : "+filePath);
 		File file;
 		FileInputStream fileInputStream;
@@ -38,6 +42,6 @@ public class AsyncImageService {
 			logger.debug(Message.DEBUG_CAUSE_GENERAL+ex.getCause());
 			ex.printStackTrace();
 		}
-		return CompletableFuture.completedFuture(b);
+		return b;
 	}
 }

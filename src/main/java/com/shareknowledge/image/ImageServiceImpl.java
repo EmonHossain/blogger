@@ -1,5 +1,6 @@
 package com.shareknowledge.image;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -47,15 +48,15 @@ public class ImageServiceImpl implements ImageService {
 	
 	@Override
 	public byte[] getActualImage(long imageId){
-		
-		return null;
+		ImageEntity image = imageRepository.findOne(imageId);
+		String fullPath = image.getImageLocation()+File.separator+image.getGeneratedName();
+		return asyncService.getFileFromStorage(fullPath);
 	}
 
 	@Override
 	public List<ImageEntity> saveImages(List<MultipartFile> images) {
 		List<ImageEntity> imageEntities = new ArrayList<ImageEntity>();
-		//CompletableFuture<ImageEntity> cfi[] = new CompletableFuture<ImageEntity>[10];
-		int index=0;
+
 		for(MultipartFile image : images){
 			
 		}
