@@ -1,5 +1,6 @@
 package com.shareknowledge.image;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +29,10 @@ public class ImageEntity extends BaseProperty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long imageId;
+	private String generatedName;
+	private String originalName;
+	@Column(length=5)
+	private String extention;
 	private String imageLocation;
 
 	public ImageEntity(Long imageId) {
