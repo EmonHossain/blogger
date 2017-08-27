@@ -1,10 +1,16 @@
 package com.shareknowledge.image;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ImageServiceImpl implements ImageService {
+	
+	@Autowired
+	private AsyncImageService asyncService;
 	
 	@Autowired
 	private ImageRepository imageRepository;
@@ -44,5 +50,18 @@ public class ImageServiceImpl implements ImageService {
 		
 		return null;
 	}
+
+	@Override
+	public List<ImageEntity> saveImages(List<MultipartFile> images) {
+		List<ImageEntity> imageEntities = new ArrayList<ImageEntity>();
+		//CompletableFuture<ImageEntity> cfi[] = new CompletableFuture<ImageEntity>[10];
+		int index=0;
+		for(MultipartFile image : images){
+			
+		}
+		return null;
+	}
+	
+	
 
 }
