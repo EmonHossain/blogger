@@ -2,7 +2,6 @@ package com.shareknowledge.image;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.concurrent.CompletableFuture;
 
 import org.slf4j.Logger;
