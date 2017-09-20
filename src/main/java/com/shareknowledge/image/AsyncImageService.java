@@ -8,6 +8,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,9 @@ import com.shareknowledge.util.Message;
 
 @Component
 public class AsyncImageService {
+
+	@Value("${image.location}")
+	private String IMAGE_DIRECTORY;
 
 	@Autowired
 	private ImageRepository imageRepository;
@@ -53,17 +57,15 @@ public class AsyncImageService {
 	}
 
 	@Async
-	public CompletableFuture<String> saveImageInfoToDb(String imageName, String location) {
-		String randName = Generator.generateRandomIdWithSalt();
-		String fileExtention = FilenameUtils.getExtension(imageName);
-		String imageLocation = File.separator + "post" + File.separator + "images" + File.separator + randName;
-		imageRepository.save(new ImageEntity(randName, imageName, fileExtention, imageLocation));
-		return CompletableFuture.completedFuture(randName);
+	public CompletableFuture<String> saveImageInfoToDb(String imageName, String generatedName,String ext) {
+		String imageLocation = IMAGE_DIRECTORY + File.separator + generatedName;
+		imageRepository.save(new ImageEntity(generatedName, imageName, ext, imageLocation));
+		return CompletableFuture.completedFuture("images"+File.separator+generatedName);
 	}
 
 	@Async
-	public CompletableFuture<Void> saveImageToStorage(MultipartFile image) {
-		// TODO Auto-generated method stub
+	public CompletableFuture<Void> saveImageFileToStorage(MultipartFile image,String generatedName,String ext) {
+
 		return null;
 	}
 }

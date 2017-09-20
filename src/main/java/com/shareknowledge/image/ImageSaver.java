@@ -12,12 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImageSaver {
 
 	@Value("${image.location}")
-	public String IMAGE_DIRECTORY;
+	private String IMAGE_DIRECTORY;
 
-	public String saveImageToFolder(MultipartFile file) {
-
-		String imageName = UUID.randomUUID().toString();
-		String fileExtention = FilenameUtils.getExtension(file.getOriginalFilename());
+	public void saveImageToFolder(MultipartFile file,String generatedName,String ext) {
 
 		String folder = IMAGE_DIRECTORY + File.separator;
 		File temp = new File(folder);
@@ -25,8 +22,7 @@ public class ImageSaver {
 			temp.mkdirs();
 		}
 
-		String modifiedDbUrl = File.separator + "images" + File.separator + imageName;
-		String fileNameWithExt = imageName + "." + fileExtention;
+		String fileNameWithExt = generatedName + "." + ext;
 
 		try {
 			File f2 = new File(folder + fileNameWithExt);
@@ -35,8 +31,6 @@ public class ImageSaver {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-
-		return modifiedDbUrl;
 
 	}
 

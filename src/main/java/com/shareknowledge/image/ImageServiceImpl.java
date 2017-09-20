@@ -7,6 +7,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import com.shareknowledge.util.Generator;
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,11 +69,13 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	public String saveImages(MultipartFile image) {
 		String message = null;
+		String generatedName =  Generator.generateRandomIdWithSalt();
+		String fileExt = FilenameUtils.getExtension(image.getOriginalFilename());
 		//save image information only to database
-		CompletableFuture<String> imageDb = asyncService.saveImageInfoToDb(image.getOriginalFilename(), "");
+		CompletableFuture<String> imageDb = asyncService.saveImageInfoToDb(image.getOriginalFilename(),generatedName,fileExt);
 		@SuppressWarnings("unused")
 		//save image file to system storage
-		CompletableFuture<Void> imageStorage = asyncService.saveImageToStorage(image);
+		CompletableFuture<Void> imageStorage = asyncService.saveImageFileToStorage(image,generatedName,fileExt);
 		try {
 			//return in 2 second if the task fails in time
 			return imageDb.get(2000, TimeUnit.MILLISECONDS);
