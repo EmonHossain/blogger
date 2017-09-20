@@ -31,11 +31,20 @@ public class ImageEntity extends BaseProperty {
 	private Long imageId;
 	private String generatedName;
 	private String originalName;
-	@Column(length=5)
+	@Column(length = 5)
 	private String extention;
 	private String imageLocation;
 
 	public ImageEntity(Long imageId) {
 		this.imageId = imageId;
 	}
+
+	public ImageEntity(String generatedName, String originalName, String extention, String imageLocation) {
+		super();
+		this.generatedName = generatedName;
+		this.originalName = originalName;
+		this.extention = extention;
+		this.imageLocation = imageLocation;
+	}
+
 }

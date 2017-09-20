@@ -7,6 +7,9 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import java.util.Date;
 
 /**
@@ -18,10 +21,12 @@ public abstract class BaseProperty {
     @CreatedBy
     private int createdBy;
     @CreatedDate
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
     @LastModifiedBy
     private int modifiedBy;
     @LastModifiedDate
+    @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedDate;
 
     public BaseProperty(){
