@@ -25,6 +25,9 @@ public class AsyncImageService {
 	@Autowired
 	private ImageRepository imageRepository;
 
+	@Autowired
+	private ImageSaver imageSaver;
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Async
@@ -65,7 +68,7 @@ public class AsyncImageService {
 
 	@Async
 	public CompletableFuture<Void> saveImageFileToStorage(MultipartFile image,String generatedName,String ext) {
-
+		imageSaver.saveImageToFolder(image,generatedName,ext);
 		return null;
 	}
 }
