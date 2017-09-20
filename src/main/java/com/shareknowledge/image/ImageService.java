@@ -11,5 +11,5 @@ import com.shareknowledge.base.BlogService;
  */
 public interface ImageService extends BlogService {
 	public byte[] getActualImage(long imageId);
-	public List<ImageEntity> saveImages(List<MultipartFile> images);
+	public void saveImages(List<MultipartFile> images);
 }
