@@ -26,9 +26,6 @@ public class ImageServiceImpl implements ImageService {
 	@Autowired
 	private ImageRepository imageRepository;
 
-	@Autowired
-	private ImageSaver imageSaver;
-
 	@Override
 	public <T> List<T> getAll() {
 		// TODO Auto-generated method stub
@@ -62,7 +59,8 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	public byte[] getImageFromSystemFile(String generatedName) {
 		ImageEntity image = imageRepository.findByGeneratedName(generatedName);
-		String fullPath = image.getImageLocation() + File.separator + image.getGeneratedName()+"."+image.getExtention();
+		String fullPath = image.getImageLocation() + File.separator + image.getGeneratedName() + "."
+				+ image.getExtention();
 		return asyncService.getFileFromStorage(fullPath);
 	}
 
@@ -72,7 +70,8 @@ public class ImageServiceImpl implements ImageService {
 		String generatedName = Generator.generateRandomIdWithSalt();
 		String fileExt = FilenameUtils.getExtension(image.getOriginalFilename());
 		// save image information only to database
-		CompletableFuture<String> imageDb = asyncService.saveImageInfoToDb(image.getOriginalFilename(), generatedName, fileExt);
+		CompletableFuture<String> imageDb = asyncService.saveImageInfoToDb(image.getOriginalFilename(), generatedName,
+				fileExt);
 		@SuppressWarnings("unused")
 		// save image file to system storage
 		CompletableFuture<Void> imageStorage = asyncService.saveImageFileToStorage(image, generatedName, fileExt);

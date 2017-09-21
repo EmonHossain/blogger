@@ -1,13 +1,14 @@
 package com.shareknowledge.base;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import java.util.List;
 
 /**
  * Created by Emon Hossain on 8/24/2017.
@@ -23,7 +24,8 @@ public class BlogDao {
         return this.manager.unwrap(Session.class);
     }
 
-    public <T> List<T> findAll(Class<?> clazz) {
+    @SuppressWarnings("unchecked")
+	public <T> List<T> findAll(Class<?> clazz) {
         return getSession().createCriteria(clazz).list();
     }
 
@@ -43,8 +45,9 @@ public class BlogDao {
         getSession().delete(entity);
     }
 
-    public <T> List<T> findByPropertyName(Class<T> clazz, String propertyName, T value) {
-        return getSession().createCriteria(clazz).add(Restrictions.eq(propertyName, value)).list();
+    @SuppressWarnings("unchecked")
+	public <T> List<T> findByPropertyName(Class<T> clazz, String propertyName, T value) {
+		return getSession().createCriteria(clazz).add(Restrictions.eq(propertyName, value)).list();
     }
 
     public <T> Object findByUniquePropertyName(Class<T> clazz, String propertyName, T value) {
