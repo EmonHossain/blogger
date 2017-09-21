@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
  * Created by Emon Hossain on 8/18/2017.
  */
 @Component
-public class AuditorAwareImpl implements AuditorAware<Integer>{
+public class AuditorAwareImpl implements AuditorAware<Integer> {
 
-    @Override
-    public Integer getCurrentAuditor() {
-        return 0;
-    }
+	@Override
+	public Integer getCurrentAuditor() {
+		return 0;
+	}
 }

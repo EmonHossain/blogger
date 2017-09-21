@@ -34,5 +34,5 @@ public class CommentEntity extends BaseProperty {
 	private String comment;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "postId")
-	private BlogPostEntity blogPostEntity;
+	private BlogPostEntity post;
 }

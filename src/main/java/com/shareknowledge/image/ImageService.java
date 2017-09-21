@@ -1,8 +1,5 @@
 package com.shareknowledge.image;
 
-import java.util.concurrent.CompletableFuture;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.shareknowledge.base.BlogService;
@@ -12,5 +9,6 @@ import com.shareknowledge.base.BlogService;
  */
 public interface ImageService extends BlogService {
 	public byte[] getImageFromSystemFile(String generatedName);
+
 	public String saveImage(MultipartFile image);
 }
