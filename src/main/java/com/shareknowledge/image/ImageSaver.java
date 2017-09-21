@@ -22,7 +22,9 @@ public class ImageSaver {
 
 		String folder = IMAGE_DIRECTORY + File.separator;
 		File temp = new File(folder);
+		
 		if (!temp.exists()) {
+			logger.debug("Status : " + folder + " is not found");
 			temp.mkdirs();
 			logger.debug("Status : " + folder + " creation succesful");
 		}

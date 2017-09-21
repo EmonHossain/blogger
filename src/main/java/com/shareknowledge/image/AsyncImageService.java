@@ -2,6 +2,7 @@ package com.shareknowledge.image;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.concurrent.CompletableFuture;
 
 import org.apache.commons.io.FilenameUtils;
@@ -49,8 +50,11 @@ public class AsyncImageService {
 				fileInputStream.read(b);
 				fileInputStream.close();
 				logger.debug("Input stream is close");
-			}
+			} else
+				throw new FileNotFoundException("File not found");
 
+		} catch (FileNotFoundException fe) {
+			logger.debug(fe.getMessage());
 		} catch (Exception ex) {
 			logger.debug(Message.DEBUG_MESSAGE_GENERAL + ex.getMessage());
 			logger.debug(Message.DEBUG_CAUSE_GENERAL + ex.getCause());
@@ -60,15 +64,14 @@ public class AsyncImageService {
 	}
 
 	@Async
-	public CompletableFuture<String> saveImageInfoToDb(String imageName, String generatedName,String ext) {
-		String imageLocation = IMAGE_DIRECTORY + File.separator + generatedName;
-		imageRepository.save(new ImageEntity(generatedName, imageName, ext, imageLocation));
-		return CompletableFuture.completedFuture("images"+File.separator+generatedName);
+	public CompletableFuture<String> saveImageInfoToDb(String imageName, String generatedName, String ext) {
+		imageRepository.save(new ImageEntity(generatedName, imageName, ext, IMAGE_DIRECTORY));
+		return CompletableFuture.completedFuture("images" + File.separator + generatedName);
 	}
 
 	@Async
-	public CompletableFuture<Void> saveImageFileToStorage(MultipartFile image,String generatedName,String ext) {
-		imageSaver.saveImageToFolder(image,generatedName,ext);
+	public CompletableFuture<Void> saveImageFileToStorage(MultipartFile image, String generatedName, String ext) {
+		imageSaver.saveImageToFolder(image, generatedName, ext);
 		return null;
 	}
 }

@@ -7,13 +7,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import com.shareknowledge.util.Generator;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shareknowledge.util.Generator;
 import com.shareknowledge.util.Message;
 
 public class ImageServiceImpl implements ImageService {
@@ -60,24 +60,24 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public byte[] getActualImage(long imageId) {
-		ImageEntity image = imageRepository.findOne(imageId);
-		String fullPath = image.getImageLocation() + File.separator + image.getGeneratedName();
+	public byte[] getImageFromSystemFile(String generatedName) {
+		ImageEntity image = imageRepository.findByGeneratedName(generatedName);
+		String fullPath = image.getImageLocation() + File.separator + image.getGeneratedName()+"."+image.getExtention();
 		return asyncService.getFileFromStorage(fullPath);
 	}
 
 	@Override
-	public String saveImages(MultipartFile image) {
+	public String saveImage(MultipartFile image) {
 		String message = null;
-		String generatedName =  Generator.generateRandomIdWithSalt();
+		String generatedName = Generator.generateRandomIdWithSalt();
 		String fileExt = FilenameUtils.getExtension(image.getOriginalFilename());
-		//save image information only to database
-		CompletableFuture<String> imageDb = asyncService.saveImageInfoToDb(image.getOriginalFilename(),generatedName,fileExt);
+		// save image information only to database
+		CompletableFuture<String> imageDb = asyncService.saveImageInfoToDb(image.getOriginalFilename(), generatedName, fileExt);
 		@SuppressWarnings("unused")
-		//save image file to system storage
-		CompletableFuture<Void> imageStorage = asyncService.saveImageFileToStorage(image,generatedName,fileExt);
+		// save image file to system storage
+		CompletableFuture<Void> imageStorage = asyncService.saveImageFileToStorage(image, generatedName, fileExt);
 		try {
-			//return in 2 second if the task fails in time
+			// return in 2 second if the task fails in time
 			return imageDb.get(2000, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException ie) {
 			logger.debug(Message.DEBUG_CAUSE_GENERAL + ie.getCause());
