@@ -4,6 +4,7 @@ import com.shareknowledge.base.BaseProperty;
 import com.shareknowledge.post.BlogPostEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -17,6 +18,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tags")
 @Data
+@EqualsAndHashCode(callSuper=true)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
