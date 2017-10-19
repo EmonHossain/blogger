@@ -25,5 +25,5 @@ public class ReplyEntity extends BaseProperty {
     private String reply;
     @ManyToOne(optional=false)
     @JoinColumn(name = "commentId")
-    private CommentEntity commentEntity;
+    private CommentEntity comment;
 }

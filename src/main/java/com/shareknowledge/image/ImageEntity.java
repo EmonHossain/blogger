@@ -27,7 +27,7 @@ import lombok.ToString;
 @ToString
 public class ImageEntity extends BaseProperty {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long imageId;
 	private String generatedName;
 	private String originalName;
