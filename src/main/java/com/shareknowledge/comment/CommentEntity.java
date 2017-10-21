@@ -35,4 +35,8 @@ public class CommentEntity extends BaseProperty {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "postId")
 	private BlogPostEntity post;
+
+	public CommentEntity(Long commentId){
+		this.commentId = commentId;
+	}
 }
