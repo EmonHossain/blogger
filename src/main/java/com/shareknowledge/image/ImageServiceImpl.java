@@ -11,11 +11,13 @@ import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.shareknowledge.util.Generator;
 import com.shareknowledge.util.Message;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
