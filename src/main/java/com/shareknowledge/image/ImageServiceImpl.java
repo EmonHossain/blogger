@@ -35,7 +35,7 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public <T> Object getUniqueResult(T id) {
+	public <T> T getUniqueResult(T id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

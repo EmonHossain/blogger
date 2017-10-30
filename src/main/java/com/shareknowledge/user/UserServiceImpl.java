@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public <T> Object getUniqueResult(T id) {
+    public <T> T getUniqueResult(T id) {
         UserEntity user = null;
         try {
             user = (UserEntity) userDao.findById(UserEntity.class, id);
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
             logger.debug(Message.DEBUG_MESSAGE_GENERAL+e.getMessage());
             logger.debug(Message.DEBUG_CAUSE_GENERAL+e.getCause());
         }
-        return user;
+        return (T)user;
     }
 
     @Override

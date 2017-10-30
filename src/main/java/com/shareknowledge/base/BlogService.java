@@ -23,7 +23,7 @@ public interface BlogService {
 	 * @param id
 	 * @return Single object
 	 */
-	public <T> Object getUniqueResult(T id);
+	public <T> T getUniqueResult(T id);
 
 	/**
 	 * 

@@ -9,7 +9,7 @@ public class BlogPostServiceImpl implements BlogPostService {
     }
 
     @Override
-    public <T> Object getUniqueResult(T id) {
+    public <T> T getUniqueResult(T id) {
         return null;
     }
 
