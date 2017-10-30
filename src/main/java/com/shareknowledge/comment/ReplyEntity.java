@@ -15,7 +15,7 @@ import com.shareknowledge.base.BaseProperty;
 @Entity
 @Table(name = "replies")
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper=true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReplyEntity extends BaseProperty {
