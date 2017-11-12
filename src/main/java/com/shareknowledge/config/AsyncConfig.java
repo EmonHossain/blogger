@@ -1,4 +1,4 @@
-package com.shareknowledge.util;
+package com.shareknowledge.config;
 
 import java.util.concurrent.Executor;
 

@@ -23,7 +23,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "comments")
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

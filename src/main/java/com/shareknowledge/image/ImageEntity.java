@@ -20,7 +20,7 @@ import lombok.ToString;
  */
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "images")
 @AllArgsConstructor
 @NoArgsConstructor

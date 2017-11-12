@@ -30,7 +30,4 @@ public abstract class BaseProperty {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifiedDate;
 
-	public BaseProperty() {
-		this.createdDate = new Date();
-	}
 }
